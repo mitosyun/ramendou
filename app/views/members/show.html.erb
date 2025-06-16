@@ -1,0 +1,8 @@
+マイページ
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @member.name %></h3>
+  <% if @member == current_member %>
+    <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
+  <% end %>
+</div>
