@@ -1,0 +1,17 @@
+<h2>レビュー</h2>
+
+<%= form_with model: @post do |f| %>
+  <p>
+    <strong>メニュー名:</strong>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <strong>感想:</strong>
+    <%= f.text_area :body %>
+  </p>
+<% end %>
+
+<%= link_to "編集", edit_post_path(@post) %>
+|
+<%= link_to "戻る", posts_path(@post) %>
