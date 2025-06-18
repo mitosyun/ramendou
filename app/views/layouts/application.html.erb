@@ -38,6 +38,12 @@
             <% end %>
           </li>
           <li>
+            <%= link_to posts_path, class:"nav-link text-dark" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+              投稿一覧
+            <% end %>
+          </li>
+          <li>
             <%= link_to destroy_member_session_path, class:"nav-link text-dark", method: :delete do %>
               <i class="fa-solid fa-sign-out-alt"></i>
               ログアウト
