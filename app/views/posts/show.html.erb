@@ -1,2 +1,42 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h2>あなたの声</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><h5>会員</h5></td>
+              <td><h5>店舗名</h5></td>
+              <td><h5>メニュー名</h5></td>
+              <td><h5>感想</h5></td>
+            </tr>
+            <tr>
+            <td>
+              <%= link_to(member_path(@post.member)) do %>
+              <%= image_tag @post.member.get_profile_image(100,100) %><br>
+              <%= @post.member.name %>
+              <% end %>
+            </td>
+            <td><%= @post.store %></td>
+            <td><%= @post.title %></td>
+            <td><%= @post.body %></td>
+            <td>
+              <% if @post.member == current_member %>
+                <%= link_to "編集", edit_post_path(@post), class:"btn btn-sm btn-outline-warning" %>
+              <% end %>
+            </td>
+            <td>
+              <% if @post.member == current_member %>
+                <%= link_to "削除", post_path(@post), class:"btn btn-sm btn-outline-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+              <% end %>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+

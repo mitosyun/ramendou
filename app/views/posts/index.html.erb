@@ -1,2 +1,40 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<main>
+  <p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h2>みんなの声</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>ニックネーム</th>
+              <th>店舗名</th>
+              <th>メニュー名</th>
+              <th>感想</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |posts| %>
+              <tr>
+                <td>
+                  <%=link_to(member_path(posts.member)) do %>
+                    <%= image_tag posts.member.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td>
+                    <%= posts.store %>
+                </td>
+                <td>
+                    <%= posts.title %>
+                </td>
+                <td><%= posts.body %></td>
+                <td colspan="3"></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

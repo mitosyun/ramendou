@@ -1,11 +1,21 @@
 <h2>レビュー</h2>
-
+<% if @post.errors.any? %>
+      <h3><%= @post.errors.count %>errors prohibited this obj from being saved:</h3>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
 <%= form_with model: @post do |f| %>
+  <p>
+    <strong>店舗名:</strong><br>
+    <%= f.text_field :store %>
+  </p>
   <p>
     <strong>メニュー名:</strong><br>
     <%= f.text_field :title %>
   </p>
-
   <p>
     <strong>感想:</strong><br>
     <%= f.text_area :body %>
@@ -13,8 +23,3 @@
   <%= f.submit '投稿', class:"btn-secondary btn-danger mt-4" %>
 <% end %>
 
-<% if @post.id %>
-  <%= link_to "編集", edit_post_path(@post) %>
-<% end %>
-|
-<%= link_to "戻る", posts_path(@post) %>

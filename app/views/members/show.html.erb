@@ -2,7 +2,10 @@
 <!-- ユーザーの詳細 -->
 <div>
   <h3><%= @member.name %></h3>
+  <%= image_tag @member.get_profile_image(100,100) %>
   <% if @member == current_member %>
     <p><%= link_to "プロフィール編集", edit_member_path(@member) %></p>
   <% end %>
 </div>
+<%= link_to "投稿詳細", post_path(current_member) %><br>
+<%= link_to "投稿一覧", posts_path %>
