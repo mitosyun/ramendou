@@ -1,0 +1,24 @@
+<h2>レビュー</h2>
+<% if @post.errors.any? %>
+      <h3><%= @post.errors.count %>errors prohibited this obj from being saved:</h3>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+<%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+  <p>
+    <strong>店舗名:</strong><br>
+    <%= f.text_field :store %>
+  </p>
+  <p>
+    <strong>メニュー名:</strong><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <strong>感想:</strong><br>
+    <%= f.text_area :body %>
+  </p>
+  <%= f.submit '投稿', class:"btn-secondary btn-danger mt-4" %>
+<% end %>
